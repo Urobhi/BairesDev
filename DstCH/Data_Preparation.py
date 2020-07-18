@@ -37,12 +37,10 @@ filepaths = listdir(os.path.join(os.getcwd(),"Contacts"))
 rename_xls(filepaths,"./Contacts/")
 filepaths =listdir(os.path.join(os.getcwd(),"./Contacts"))
 Train_Data = load_pandascsv(filepaths,"Contacts/")
-
-
-
+Train_Data.to_csv('train.csv',index=False)
 
 filepaths = listdir(os.path.join(os.getcwd(),"Data"))
 rename_xls(filepaths,"./Data/")
 filepaths =listdir(os.path.join(os.getcwd(),"./Data"))
 Test_Data = load_pandascsv(filepaths,"Data/")
-
+Test_Data.to_csv('test.csv',index=False)
