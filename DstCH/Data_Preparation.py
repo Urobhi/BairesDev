@@ -17,7 +17,7 @@ def load_pandascsv (filepaths):
         li = []
         if filepath.endswith(".csv"):
             string = os.path.join(os.getcwd(),'Conctacts', filepath)
-            aux=pd.read_csv(r"'%s'" % string,index_col = None,header=None)
+            aux=pd.read_csv("'%s'" % string,index_col = None,header=None)
             aux['Response'] = filepath[0]
             li.append(aux)
         else:
