@@ -13,18 +13,20 @@ def rename_xls (filepaths):
 
 
 def load_pandascsv (filepaths):
+    li = []
     for filepath in filepaths:
-        li = []
+        
         if filepath.endswith(".csv"):
-            string = os.path.join(os.getcwd(),'Conctacts', filepath)
-            aux=pd.read_csv("'%s'" % string,index_col = None,header=None)
+            url = os.path.join('https://raw.githubusercontent.com/Urobhi/BairesDev/master/DstCH/Contacts', filepath)
+            aux=pd.read_csv(url,index_col = None)
             aux['Response'] = filepath[0]
             li.append(aux)
         else:
-            aux=pd.read_excel(os.path.join('Conctacts', filepath))
+            url = os.path.join('https://raw.githubusercontent.com/Urobhi/BairesDev/master/DstCH/Contacts', filepath)
+            aux=pd.read_excel(url, index_col = None)
             aux['Response'] = filepath[0]
             li.append(aux)
-    df = pd.concat(li,axis=0,ignore_index=TRUE)
+    df = pd.concat(li,axis=0,ignore_index=True)
     return(df)
 
 abspath = os.path.abspath(__file__)
