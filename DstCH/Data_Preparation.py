@@ -15,6 +15,7 @@ def load_pandascsv (filepaths,basepath):
     li = []
     for filepath in filepaths:
         url = 'https://raw.githubusercontent.com/Urobhi/BairesDev/master/DstCH/' + basepath + filepath
+        print(url)
         if filepath.endswith(".csv"):
             
             aux=pd.read_csv(url,index_col = None)
