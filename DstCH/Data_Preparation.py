@@ -7,14 +7,14 @@ from os import listdir
 def rename_xls (filepaths,basepath):
     for f in filepaths:
         if f.endswith('.xls'):
-            os.rename(basepath + f,basepath +f.split('.')[0] + '.csv')
+            os.rename(os.path.join(os.getcwd(),'Contacts',f),os.path.f.split('.')[0] + '.csv')
 
 
 
-def load_pandascsv (filepaths):
+def load_pandascsv (filepaths,basepath):
     li = []
     for filepath in filepaths:
-        url = 'https://raw.githubusercontent.com/Urobhi/BairesDev/master/DstCH/Contacts/'+ filepath
+        url = 'https://raw.githubusercontent.com/Urobhi/BairesDev/master/DstCH/' + basepath + filepath
         if filepath.endswith(".csv"):
             
             aux=pd.read_csv(url,index_col = None)
@@ -32,9 +32,16 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
+filepaths = listdir(os.path.join(os.getcwd(),"Contacts"))
+rename_xls(filepaths,"./Contacts/")
+filepaths =listdir(os.path.join(os.getcwd(),"./Contacts"))
+Train_Data = load_pandascsv(filepaths,"Contacts/")
+
+
 
 
 filepaths = listdir(os.path.join(os.getcwd(),"Data"))
 rename_xls(filepaths,"./Data/")
-
+filepaths =listdir(os.path.join(os.getcwd(),"./Data"))
+Test_Data = load_pandascsv(filepaths,"Data/")
 
