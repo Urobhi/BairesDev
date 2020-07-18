@@ -4,10 +4,10 @@ import os
 from os import listdir
 
 
-def rename_xls (filepaths):
+def rename_xls (filepaths,basepath):
     for f in filepaths:
         if f.endswith('.xls'):
-            os.rename(os.path.join(os.getcwd(),'Contacts',f),f.split('.')[0] + '.csv')
+            os.rename(basepath + f,basepath +f.split('.')[0] + '.csv')
 
 
 
@@ -32,10 +32,9 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filepaths = listdir(os.path.join(os.getcwd(),"Contacts"))
 
-rename_xls(filepaths)
 
-filepaths =listdir(os.path.join(os.getcwd(),"./Contacts"))
+filepaths = listdir(os.path.join(os.getcwd(),"Data"))
+rename_xls(filepaths,"./Data/")
 
-Data = load_pandascsv(filepaths)
+
